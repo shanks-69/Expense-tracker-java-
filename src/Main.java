@@ -18,6 +18,7 @@ public class Main {
         System.out.println("1.Add expense");
         System.out.println("2.List all Expenses");
         System.out.println("3.Exit");     
+        System.out.println("4.Delete Expense");
         
         choice = scanner.nextInt();
         scanner.nextLine();
@@ -39,6 +40,11 @@ public class Main {
             System.out.println("Goodbye");
             running = false;
             break;
+
+            case 4:
+            DeleteExpense(scanner);
+            break;
+
 
             default:
             System.out.println("Invalid choice");
@@ -73,5 +79,28 @@ public class Main {
                 System.out.println("- " + expense);
             }
         }
+    }
+    public static void DeleteExpense(Scanner scanner){
+        if(expenses.isEmpty()){
+            System.out.println("No Expense");
+            return;
+        }
+        System.out.println("Choose an expense to delete");
+
+        for(int i=0;i<expenses.size();i++){
+            System.out.println((i + 1) + ". " +expenses.get(i));
+        }
+        int number = scanner.nextInt();
+        scanner.nextLine();
+        if(number < 1 || number > expenses.size()){
+            System.out.println("Invalid number");
+            return;
+        }
+        expenses.remove(number - 1);
+        System.out.println("Expense deleted");
+
+            
+        
+
     }
 }
